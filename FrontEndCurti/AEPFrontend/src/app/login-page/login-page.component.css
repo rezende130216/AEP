@@ -1,0 +1,27 @@
+.login-page-main{
+    background-color: #3569c9;
+    width: 100%;
+    display: flex;
+    align-content: space-between;
+
+    
+}
+
+.login-page-div{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 40%;
+  height: 100vh;
+}
+
+.img{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
