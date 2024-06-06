@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.AEP2024.AEP2024.DTO.ContaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -20,6 +21,7 @@ public class Conta implements Serializable{
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long contaID;
+	private String nome;
 	private String tipoDeConta;
 	
 	@JsonIgnore
@@ -31,10 +33,18 @@ public class Conta implements Serializable{
 		super();
 	}
 
-	public Conta(Long contaID, String tipoDeConta) {
+	public Conta(Long contaID, String tipoDeConta, String nome) {
 		super();
 		this.contaID = contaID;
 		this.tipoDeConta = tipoDeConta;
+		this.nome = nome;
+	}
+	
+	public Conta(ContaDTO conta) {
+		this.contaID = conta.contaID();
+		this.tipoDeConta = conta.tipoDeConta();
+		this.transacoes = conta.transacoes();
+		this.nome = conta.nome();
 	}
 
 	public Long getContaID() {
@@ -59,6 +69,14 @@ public class Conta implements Serializable{
 
 	public void setTransacoes(List<Transacao> transacoes) {
 		this.transacoes = transacoes;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
