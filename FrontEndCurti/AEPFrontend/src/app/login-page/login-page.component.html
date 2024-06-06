@@ -1,20 +1,30 @@
-<div class="login-page-main example-full-width">
-    <div class="login-page-div">
-        <h2>Seja bem-vindo!</h2>
-        <br/><br/>
-        <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>E-mail</mat-label>
-            <input type="email" matInput placeholder="Digite seu e-mail...">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Senha</mat-label>
-            <input type="password" matInput placeholder="Digite sua senha...">
-        </mat-form-field>
-        <button mat-stroked-button color="green">Login</button> 
+<div class="grid grid-nogutter text-800 v-full min-h-full ">
+    <div class="col-12 md:col-4 text-center flex align-items-center justify-content-center">
+        <div>
+            <i class="pi pi-user m-2" style="font-size: 2.5rem"></i>
+            <p-floatLabel class="m-1">
+                <input pInputText id="username" />
+                <label for="username">Usuário</label>
+            </p-floatLabel>
+            <p-floatLabel class="m-1">
+                <p-password [feedback]="false" />
+                <label for="password">Senha</label>
+            </p-floatLabel>
+            <br>
+            <p-button class="m-1" label="Login" [raised]="true" severity="success" />
+            <a routerLink="/home" class="p-button font-bold bg-green-600 border-transparent outline-none">
+                Login DEV
+            </a>
+        </div>
+
+
     </div>
-    <div class="img">
-        <h1>$olution.</h1>
-        <h3>Gerencie seu dinheiro agora!</h3>
+    <div
+        class="hidden md:flex col-12 md:col-8 overflow-hidden bg-green-600 text-center overflow-hidden align-items-center justify-content-center">
+        <div>
+            <h1 class="text-6xl font-bold mb-3">$olution.</h1>
+            <h3>Gerencie seu dinheiro agora!</h3>
+        </div>
     </div>
-    
+
 </div>

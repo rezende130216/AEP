@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import {MatGridListModule, MatGridList, MatGridTile} from'@angular/material/grid-list';
-import {MatFormFieldModule, MatFormField} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-login-page',
   standalone: true,
-  imports: [MatGridListModule, MatGridList, MatGridTile, MatFormFieldModule, MatFormField, MatInputModule, MatButtonModule],
+  imports: [InputTextModule, FloatLabelModule, PasswordModule, ButtonModule, RouterLink],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
 })
