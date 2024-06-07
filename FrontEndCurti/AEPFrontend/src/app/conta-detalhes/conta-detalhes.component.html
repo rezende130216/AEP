@@ -1,10 +1,19 @@
 <app-nav-menu/>
 <div class="bg-white">
-    <h1>{{conta[0].id}}</h1>
-    <h1>{{conta[0].get('nome')}}</h1>
+    <div class="surface-card p-4 shadow-2 border-round">
+        <div class="text-3xl font-medium text-900 mb-3">{{conta[0].get('nome')}}</div>
+        <div class="font-medium text-500 mb-3">Informações da conta: </div>
+        <div style="height: 150px" class="border-2 border-dashed surface-border">
+            <div>
+                <p class="font-medium ml-5">ID: {{conta[0].id}}</p>
+                <p class="font-medium ml-5">Nome da Conta: {{conta[0].get('nome')}}</p>
+                <p class="font-medium ml-5">Tipo Da Conta: {{conta[0].get('tipoDeConta')}}</p>
+            </div>
+        </div>
+    </div>
     <app-status-conta />
     <div class="flex justify-content-center md:justify-content-end flex-wrap m-5">
-        <a routerLink="/cadastro_conta" class="p-button font-bold bg-green-600 border-transparent outline-none flex ">
+        <a routerLink="/transacao_cadastro/{{this.conta[0].id}}" class="p-button font-bold bg-green-600 border-transparent outline-none flex ">
             Cadastrar nova transação
         </a>
     </div>

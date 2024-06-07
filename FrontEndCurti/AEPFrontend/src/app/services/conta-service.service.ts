@@ -7,8 +7,6 @@ import * as  Parse from 'parse';
 })
 export class ContaServiceService {
 
-  readonly apiURL: string = "http://localhost:8080";
-
   constructor(private http: HttpClient) {
   }
 

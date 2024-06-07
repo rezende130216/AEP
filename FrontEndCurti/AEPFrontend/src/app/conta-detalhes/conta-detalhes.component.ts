@@ -2,18 +2,19 @@ import { Component, Input } from '@angular/core';
 import { ContaServiceService } from '../services/conta-service.service';
 import { NavMenuComponent } from '../nav-menu/nav-menu.component';
 import { StatusContaComponent } from '../status-conta/status-conta.component';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-conta-detalhes',
   standalone: true,
-  imports: [NavMenuComponent, StatusContaComponent],
+  imports: [NavMenuComponent, StatusContaComponent, RouterLink],
   templateUrl: './conta-detalhes.component.html',
   styleUrl: './conta-detalhes.component.css'
 })
 export class ContaDetalhesComponent {
 
-  constructor(private contaService:ContaServiceService){
+  constructor(private contaService:ContaServiceService, private router:Router, private route: ActivatedRoute){
 
   }
 
@@ -27,7 +28,10 @@ export class ContaDetalhesComponent {
     console.log(this.conta)
   }
   
-
+  goToCadastroTransacao(){
+    console.log(this.conta[0].id)
+    this.router.navigate([`/transacao_cadastro/${this.conta[0].id}`], { relativeTo: this.route });
+  }
 
 
 }
