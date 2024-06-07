@@ -1,0 +1,11 @@
+<app-nav-menu/>
+<div class="bg-white">
+    <h1>{{conta[0].id}}</h1>
+    <h1>{{conta[0].get('nome')}}</h1>
+    <app-status-conta />
+    <div class="flex justify-content-center md:justify-content-end flex-wrap m-5">
+        <a routerLink="/cadastro_conta" class="p-button font-bold bg-green-600 border-transparent outline-none flex ">
+            Cadastrar nova transação
+        </a>
+    </div>
+</div>

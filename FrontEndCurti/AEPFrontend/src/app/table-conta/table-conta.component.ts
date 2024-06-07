@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ContaServiceService } from '../services/conta-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-table-conta',
@@ -12,26 +13,32 @@ import { ContaServiceService } from '../services/conta-service.service';
 })
 export class TableContaComponent {
 
-  constructor(private contaService: ContaServiceService){
+  constructor(private contaService: ContaServiceService, private router: Router, private route: ActivatedRoute) {
 
   }
 
-  contas:any = []
-  selectedConta:any;
-  metaKey:any;
-  
+  contas: any = []
+  selectedConta: any;
+  metaKey: any;
+  data: contaDataGet[] = [];
 
-  
-  async ngOnInit(){
-    this.contas = this.contaService.getAllContas();
-    console.log(this.contas)
+
+
+  async ngOnInit() {
+    this.data = await this.contaService.getConta();
+
   }
 
-  onRowSelect(e:any){
-    console.log("e")
+  onRowSelect(e: any) {
+    this.router.navigate([`/conta_detalhes/${e.data.id}`], { relativeTo: this.route });
   }
 
-  onRowUnselect(e:any){
+  onRowUnselect(e: any) {
     console.log(e)
   }
 }
+
+interface contaDataGet {
+  id: string,
+  get: any,
+} 

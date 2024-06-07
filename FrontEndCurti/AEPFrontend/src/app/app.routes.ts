@@ -3,10 +3,15 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { HomeComponent } from './home/home.component';
 import { CadastroContaComponent } from './cadastro-conta/cadastro-conta.component';
+import { ContaDetalhesComponent } from './conta-detalhes/conta-detalhes.component';
+import { UrlSegment } from '@angular/router';
+
 
 export const routes: Routes = [
     { path: 'login', component: LoginPageComponent },
     { path: '', component: TelaInicialComponent },
     { path: 'home', component: HomeComponent },
-    { path: 'cadastro_conta', component: CadastroContaComponent }
+    { path: 'cadastro_conta', component: CadastroContaComponent },
+    { path: 'conta_detalhes/:id', component: ContaDetalhesComponent},
+    
 ];
