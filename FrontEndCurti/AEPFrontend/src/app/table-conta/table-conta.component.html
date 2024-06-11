@@ -1,5 +1,5 @@
 <p-table 
-    [value]="contas" 
+    [value]="data" 
     selectionMode="single" 
     [(selection)]="selectedConta" 
     dataKey="id" 
@@ -16,9 +16,9 @@
         </ng-template>
         <ng-template pTemplate="body" let-conta>
             <tr [pSelectableRow]="conta">
-                <td>{{conta.contaID}}</td>
-                <td>{{conta.nome}}</td>
-                <td>{{conta.tipoDeConta}}</td>
+                <td>{{conta.id}}</td>
+                <td>{{conta.get('nome')}}</td>
+                <td>{{conta.get('tipoDeConta')}}</td>
                 <td>{{conta.transacoes}}</td>
             </tr>
         </ng-template>
