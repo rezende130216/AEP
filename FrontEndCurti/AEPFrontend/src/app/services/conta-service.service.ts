@@ -50,6 +50,7 @@ export class ContaServiceService {
 
       Conta.set("nome", newConta.nome);
       Conta.set("tipoDeConta", newConta.tipoDeConta);
+      Conta.set("valor", newConta.valorConta)
 
       Conta.save().then(() => {
         console.log("New Post added successfully");

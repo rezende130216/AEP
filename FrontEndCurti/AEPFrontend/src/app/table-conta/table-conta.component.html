@@ -11,7 +11,6 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Tipo de Conta</th>
-                <th>Transações</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-conta>
@@ -19,7 +18,6 @@
                 <td>{{conta.id}}</td>
                 <td>{{conta.get('nome')}}</td>
                 <td>{{conta.get('tipoDeConta')}}</td>
-                <td>{{conta.transacoes}}</td>
             </tr>
         </ng-template>
 </p-table>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ContaServiceService } from '../services/conta-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TransacaoService } from '../services/transacao.service';
 
 @Component({
   selector: 'app-table-conta',
@@ -21,12 +22,10 @@ export class TableContaComponent {
   selectedConta: any;
   metaKey: any;
   data: contaDataGet[] = [];
-
-
+  transacoes: any
 
   async ngOnInit() {
     this.data = await this.contaService.getConta();
-
   }
 
   onRowSelect(e: any) {
@@ -36,6 +35,7 @@ export class TableContaComponent {
   onRowUnselect(e: any) {
     console.log(e)
   }
+
 }
 
 interface contaDataGet {

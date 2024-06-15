@@ -11,10 +11,96 @@
             </div>
         </div>
     </div>
-    <app-status-conta />
+
+    <div class="px-4 py-5 md:px-6 lg:px-8 bg-white">
+        <div class="grid bg-white">
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round bg-white">
+                    <div class="flex justify-content-between mb-3 bg-white">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Gastos totais</span>
+                            <div class="text-900 font-medium text-xl">{{gastosTotais.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}}</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-shopping-cart text-blue-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Transações realizadas</span>
+                            <div class="text-900 font-medium text-xl">{{transacoes.length}}</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-orange-100 border-round" style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-map-marker text-orange-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Saídas</span>
+                            <div class="text-900 font-medium text-xl">{{saidas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}}</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-inbox text-cyan-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 md:col-6 lg:col-3">
+                <div class="surface-card shadow-2 p-3 border-round">
+                    <div class="flex justify-content-between mb-3">
+                        <div>
+                            <span class="block text-500 font-medium mb-3">Entradas</span>
+                            <div class="text-900 font-medium text-xl">{{entradas.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}}</div>
+                        </div>
+                        <div class="flex align-items-center justify-content-center bg-purple-100 border-round" style="width:2.5rem;height:2.5rem">
+                            <i class="pi pi-comment text-purple-500 text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="flex justify-content-center md:justify-content-end flex-wrap m-5">
-        <a routerLink="/transacao_cadastro/{{this.conta[0].id}}" class="p-button font-bold bg-green-600 border-transparent outline-none flex ">
+        <a routerLink="/transacao_cadastro/{{this.conta[0].id}}" class="p-button font-bold bg-green-600 border-transparent outline-none flex no-underline ">
             Cadastrar nova transação
         </a>
     </div>
+    <p-table 
+    [value]="transacoes" 
+    selectionMode="single" 
+    [(selection)]="selectedTransacao" 
+    dataKey="id" 
+    (onRowSelect)="onRowSelect($event)" 
+    (onRowUnselect)="onRowUnselect($event)" 
+    [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Valor</th>
+                <th>Data</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-transacoes>
+            <tr [pSelectableRow]="transacoes">
+                <td>{{transacoes.id}}</td>
+                <td>{{transacoes.get('descricao')}}</td>
+                <td>{{transacoes.get('categoria')}}</td>
+                <td>{{ transacoes.get('valor').toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</td>
+                <td>{{transacoes.get('dataOrigem').toLocaleDateString()}}</td>
+                <td><i class="pi pi-trash text-red-900 text-xl" (click)="deleteTransacao(transacoes.id)"></i></td>
+            </tr>
+        </ng-template>
+</p-table>
 </div>
+    

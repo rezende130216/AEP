@@ -21,22 +21,35 @@
         <div>
             <form [formGroup]="formCadastroTransacao" (ngSubmit)="cadastroTransacao()">
                 <label for="valorTransacao" class="block text-900 font-medium mb-2">Valor</label>
-                <input id="valorTransacao" type="number" formControlName="valorTransacao" placeholder="Valor da transação" pInputText
-                    class="w-full mb-3">
+                <input id="valorTransacao" type="number" formControlName="valorTransacao"
+                    placeholder="Valor da transação" pInputText class="w-full mb-3">
+
+                    <div *ngIf="formCadastroTransacao.get('valorTransacao')?.invalid && (formCadastroTransacao.get('valorTransacao')?.dirty || formCadastroTransacao.get('valorTransacao')?.touched)"
+                    class="text-red-900 mb-4">
+                    Campo obrigatório. Digite o valor da transação!
+                </div>
 
                 <label for="categoriaTransacao" class="block text-900 font-medium mb-2">Categoria</label>
-                <input id="categoriaTransacao" type="text" placeholder="Categoria da Transacao" formControlName="categoriaTransacao" pInputText
-                    class="w-full mb-3">
+                <p-dropdown formControlName="categoriaTransacao" [options]="categoriasTransacaoEnum" optionLabel="name"
+                    placeholder="Categoria" />
 
-                <label for="dataTransacao" class="block text-900 font-medium mb-2">Data</label>
+                <div *ngIf="formCadastroTransacao.get('categoriaTransacao')?.invalid && (formCadastroTransacao.get('categoriaTransacao')?.dirty || formCadastroTransacao.get('categoriaTransacao')?.touched)"
+                    class="text-red-900 mb-4 mt-2">
+                    Campo obrigatório. Escolha uma categoria!
+                </div>
+
+                <label for="dataTransacao" class="block text-900 font-medium mb-2 mt-2">Data</label>
                 <p-calendar class="w-full mb-3" formControlName="dataTransacao" placeholder="Data" />
+                <div *ngIf="formCadastroTransacao.get('dataTransacao')?.invalid && (formCadastroTransacao.get('dataTransacao')?.dirty || formCadastroTransacao.get('dataTransacao')?.touched)"
+                    class="text-red-900 mb-4 mt-2">
+                    Campo obrigatório. Escolha uma data!
+                </div>
 
                 <label for="descricaoTransacao" class="block text-900 font-medium mb-2 mt-3">Descrição</label>
-                <input id="descricaoTransacao" type="text" placeholder="Descrição da Transação" formControlName="descricaoTransacao" pInputText
-                    class="w-full mb-3">
+                <input id="descricaoTransacao" type="text" placeholder="Descrição da Transação"
+                    formControlName="descricaoTransacao" pInputText class="w-full mb-3">
 
-                <button pButton pRipple label="Cadastrar" icon="pi pi-plus" type="submit"
-                    class="w-full"></button>
+                <button pButton pRipple label="Cadastrar" icon="pi pi-plus" type="submit" class="w-full"></button>
             </form>
         </div>
     </div>

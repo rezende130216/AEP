@@ -13,9 +13,20 @@
                 <input id="nomeConta" type="text" formControlName="nomeConta" placeholder="Nome da Conta" pInputText
                     class="w-full mb-3">
 
+                <div *ngIf="formCadastroConta.get('nomeConta')?.invalid && (formCadastroConta.get('nomeConta')?.dirty || formCadastroConta.get('nomeConta')?.touched)"
+                    class="text-red-900 mb-4">
+                    Campo obrigatório. Digite o nome da conta!
+                </div>
+
+
                 <label for="tipoConta" class="block text-900 font-medium mb-2">Tipo da Conta</label>
                 <input id="tipoConta" type="text" placeholder="Tipo da Conta" formControlName="tipoConta" pInputText
                     class="w-full mb-3">
+
+                <div *ngIf="formCadastroConta.get('tipoConta')?.invalid && (formCadastroConta.get('tipoConta')?.dirty || formCadastroConta.get('tipoConta')?.touched)"
+                    class="text-red-900 mb-4">
+                    Campo obrigatório. Digite o tipo da conta!
+                </div>
 
                 <button pButton pRipple label="Cadastrar" icon="pi pi-plus" type="submit"
                     class="w-full"></button>
